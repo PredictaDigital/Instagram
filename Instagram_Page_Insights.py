@@ -13,12 +13,12 @@ server = 'Predicta.Database.Windows.Net'
 database = 'Predicta'
 username = 'PredictaAdmin'
 password = 'Yhf^43*&^FHHytf'
-Instagram_Table = "dbo.Instagram_Page_Insights_KS"      #need to change this to Fact table
+db_table = "dbo.Instagram_Page_Insights_KS"      #need to change this to Fact table
 conn = pyodbc.connect(f'DRIVER={{SQL Server}};SERVER={server};DATABASE={database};UID={username};PWD={password}')
 cursor = conn.cursor()
 
 # Get the maximum date present in the table
-cursor.execute(f"SELECT MAX([end_time]) FROM {Instagram_Table}")
+cursor.execute(f"SELECT MAX([end_time]) FROM {db_table}")
 max_date = cursor.fetchone()[0]
 # print(max_date)
 # Convert max_date to datetime object if it's not None
@@ -52,7 +52,7 @@ list_type_data = analytics_data.get('data')
 # print(analytics_data)
 #----------------------------------------------------------------------------------------------
 # Delete existing data for the last two days
-# delete_query = f"DELETE FROM {Instagram_Table} WHERE [end_time] >?"
+# delete_query = f"DELETE FROM {db_table} WHERE [end_time] >?"
 # cursor = conn.cursor()
 # cursor.execute(delete_query, ({delete_date}))
 # cursor.close()
@@ -71,7 +71,7 @@ for item in list_type_data:
 for end_time, metrics in result_data.items():
     # Constructing the INSERT query
     query = f'''
-        INSERT INTO dbo.Instagram_Page_Insights_KS (end_time,follower_count,impressions,reach)
+        INSERT INTO {db_table} (end_time,follower_count,impressions,reach)
                 VALUES (?, ?, ?,?)
                 '''
 # Executing the INSERT query
