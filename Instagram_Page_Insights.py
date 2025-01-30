@@ -4,7 +4,7 @@ import pyodbc
 from datetime import datetime, timedelta
 
 # Facebook API endpoint
-API_VERSION = 'v19.0'  # Specify the desired Graph API version
+API_VERSION = 'v22.0'  # Specify the desired Graph API version
 PAGE_ID = '17841448939781055'
 ACCESS_TOKEN = 'EAAFe1V0tVGYBO36XWYrZBEj9iWZBsZCSwB0oE49XkmwlFE7sMPaAJ4MHj36am6DIZALxupAkbg7M4QascR2cp6DcTAFpvvFQ7pknOPR1BBRf6BGqhZCazrvrZAZC8MlvrpeUVOhIbyb3M0uuZAzm7G1Nm41a1Y6MNuxhIciqpHSpRJU7YHV3fAuprLJJM1Of2qoVi2Xdp1MPGJbGGQFAPZCHuBwnoN7QJsqrD4heEp8IZD'
 
